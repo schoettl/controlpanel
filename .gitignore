@@ -1,0 +1,10 @@
+*.swp
+Makefile
+*.o
+tags
+moc_*
+ui_*
+*.autosave
+*.user
+.qmake.stash
+system-control
