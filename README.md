@@ -1,12 +1,12 @@
-System Control GUI
-==================
+Control Panel
+=============
 
 It's an easily customizable system control panel.
 It comes with a tray icon to show the panel if it's hidden.
 
 It's written in C++/Qt5.
 
-Example configuration file `~/.config/systemcontrol/buttons.conf`:
+Example configuration file `~/.config/controlpanel/buttons.conf`:
 
 ```
 # This is a comment line.

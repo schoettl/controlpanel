@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QRegExp>
 
-#define APP_NAME_LOWER_CASE "systemcontrol"
+#define APP_NAME_LOWER_CASE "controlpanel"
 
 void readTextFile(const QString &filename, QStringList &lines)
 {

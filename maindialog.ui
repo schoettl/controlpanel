@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>System Control</string>
+   <string>Control Panel</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
