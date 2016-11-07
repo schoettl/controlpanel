@@ -13,13 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     maindialog.cpp \
     buttonconfig.cpp
 
-HEADERS  += mainwindow.h \
-    maindialog.h \
+HEADERS  += maindialog.h \
     buttonconfig.h
 
-FORMS    += mainwindow.ui \
-    maindialog.ui
+FORMS    += maindialog.ui
