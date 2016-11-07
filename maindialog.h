@@ -3,8 +3,8 @@
 
 #include <QList>
 #include <QDialog>
-
 #include "buttonconfig.h"
+#include "mybutton.h"
 
 namespace Ui {
 class MainDialog;
@@ -21,6 +21,15 @@ public:
 
 private:
     Ui::MainDialog *ui;
+    QList<MyButton*> buttonList;
+private slots:
+    void buttonClicked()
+    {
+        foreach (MyButton* button, buttonList)
+        {
+            button->updateVisibility();
+        }
+    }
 };
 
 #endif // MAINDIALOG_H

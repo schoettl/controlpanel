@@ -1,5 +1,6 @@
 #include "maindialog.h"
 #include "ui_maindialog.h"
+#include "mybutton.h"
 #include <QDebug>
 #include <QWidget>
 
@@ -14,18 +15,15 @@ MainDialog::MainDialog(const QList<ButtonConfig> &list) :
     MainDialog((QWidget*) NULL)
 {
     int insertIndex = 0;
-    foreach(const ButtonConfig& bc, list)
+    foreach (const ButtonConfig& bc, list)
     {
         qDebug() << bc.caption;
-        QPushButton* button = new QPushButton();
-        button->setText(bc.caption);
-        // TODO set action
-        // QObject::connect(button, SIGNAL(clicked()), &
+        MyButton* button = new MyButton(bc);
+        QObject::connect(button, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+        buttonList.append(button);
         ui->buttonlist->insertWidget(insertIndex++, button);
     }
 }
-
-// TODO on show: set visibility of buttons
 
 MainDialog::~MainDialog()
 {

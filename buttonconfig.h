@@ -30,6 +30,11 @@ public:
         return WIFEXITED(ret) && WEXITSTATUS(ret) == 0;
     }
 
+    bool isSpecialCommand(const QString& command) const
+    {
+        return command1 == ':' + command;
+    }
+
 };
 
 #endif // BUTTONCONFIG_H
