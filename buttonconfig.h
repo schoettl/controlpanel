@@ -2,6 +2,10 @@
 #define BUTTONCONFIG_H
 
 #include <QString>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
 
 class ButtonConfig
 {
@@ -16,6 +20,16 @@ public:
         command2(command2)
     {
     }
+
+    // Run a shell command an return true if the exit status is 0.
+    // The command should not be started in background, i.e. no trailing "&".
+    static bool runShellAndReturnExitStatusSuccess(const QString& command)
+    {
+        string commandstr = command.toUtf8().constData();
+        int ret = system(commandstr.c_str());
+        return WIFEXITED(ret) && WEXITSTATUS(ret) == 0;
+    }
+
 };
 
 #endif // BUTTONCONFIG_H
