@@ -2,6 +2,8 @@
 #define MYBUTTON_H
 
 #include <QPushButton>
+#include <QApplication>
+
 #include "buttonconfig.h"
 
 class MyButton : public QPushButton
@@ -13,7 +15,7 @@ public:
     MyButton(const ButtonConfig &buttonConfig) :
         buttonConfig(buttonConfig)
     {
-        QObject::connect(this, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+        connect(this, SIGNAL(clicked()), this, SLOT(buttonClicked()));
         setText(buttonConfig.caption);
         updateVisibility();
     }
@@ -32,6 +34,10 @@ public slots:
         if (buttonConfig.isSpecialCommand("close"))
         {
             window()->close();
+        }
+        else if (buttonConfig.isSpecialCommand("quit"))
+        {
+            QApplication::quit();
         }
         else if (buttonConfig.command1 != "")
         {

@@ -52,7 +52,7 @@ void readButtonConfig(QList<ButtonConfig> &list)
 
     foreach(QString line, lines)
     {
-        qDebug() << line;
+        //qDebug() << line;
         QStringList parts = line.split("\t");
         if (parts.isEmpty())
             continue;
@@ -74,9 +74,6 @@ int main(int argc, char *argv[])
 
     MainDialog d(list);
     d.show();
-
-    //MainWindow w;
-    //w.show();
 
     return a.exec();
 }
