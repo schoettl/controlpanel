@@ -9,15 +9,15 @@ using namespace std;
 
 class ButtonConfig
 {
-public:
+private:
     QString caption;
-    QString command1;
-    QString command2;
+    QString primaryShellCommand;
+    QString shellCommandToDetermineVisibility;
 public:
-    ButtonConfig(const QString& caption, const QString& command1, const QString& command2) :
+    ButtonConfig(const QString& caption, const QString& primaryShellCommand, const QString& shellCommandToDetermineVisibility) :
         caption(caption),
-        command1(command1),
-        command2(command2)
+        primaryShellCommand(primaryShellCommand),
+        shellCommandToDetermineVisibility(shellCommandToDetermineVisibility)
     {
     }
 
@@ -32,7 +32,23 @@ public:
 
     bool isSpecialCommand(const QString& command) const
     {
-        return command1 == ':' + command;
+        return primaryShellCommand == ':' + command;
+    }
+
+    const QString& getShellCommandToDetermineVisibility() const
+    {
+        return shellCommandToDetermineVisibility;
+    }
+
+    const QString& getCaption() const
+    {
+        return caption;
+    }
+
+    void runPrimaryShellCommand() const
+    {
+        if (primaryShellCommand != "")
+            runShellAndReturnExitStatusSuccess(primaryShellCommand);
     }
 
 };

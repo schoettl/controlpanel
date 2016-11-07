@@ -16,15 +16,15 @@ public:
         buttonConfig(buttonConfig)
     {
         connect(this, SIGNAL(clicked()), this, SLOT(buttonClicked()));
-        setText(buttonConfig.caption);
+        setText(buttonConfig.getCaption());
         updateVisibility();
     }
 
     void updateVisibility()
     {
-        if (buttonConfig.command2 != "")
+        if (buttonConfig.getShellCommandToDetermineVisibility() != "")
         {
-            setVisible(ButtonConfig::runShellAndReturnExitStatusSuccess(buttonConfig.command2));
+            setVisible(ButtonConfig::runShellAndReturnExitStatusSuccess(buttonConfig.getShellCommandToDetermineVisibility()));
         }
     }
 
@@ -39,9 +39,9 @@ public slots:
         {
             QApplication::quit();
         }
-        else if (buttonConfig.command1 != "")
+        else
         {
-            ButtonConfig::runShellAndReturnExitStatusSuccess(buttonConfig.command1);
+            buttonConfig.runPrimaryShellCommand();
         }
     }
 };

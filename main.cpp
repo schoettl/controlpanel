@@ -9,6 +9,7 @@
 #include <QDir>
 #include <QtGlobal>
 #include <QDebug>
+#include <QRegExp>
 
 #define APP_NAME_LOWER_CASE "systemcontrol"
 
@@ -32,11 +33,6 @@ void readButtonConfig(QList<ButtonConfig> &list)
     //QString s = QStandardPaths::locate(QStandardPaths::ConfigLocation, APP_NAME_LOWER_CASE, QStandardPaths::LocateDirectory);
     QString configDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     qDebug() << configDir;
-    if (configDir == "")
-    {
-        qCritical() << "config location does not exist. exiting.";
-        QApplication::exit(1);
-    }
 
     QString configDir2 = configDir + "/" + APP_NAME_LOWER_CASE;
     QDir dir(configDir2);
@@ -53,9 +49,10 @@ void readButtonConfig(QList<ButtonConfig> &list)
     foreach(QString line, lines)
     {
         //qDebug() << line;
-        QStringList parts = line.split("\t");
-        if (parts.isEmpty())
+        QRegExp ignoreLineRegex("#.*|\\s*");
+        if (ignoreLineRegex.exactMatch(line))
             continue;
+        QStringList parts = line.split("\t");
         QString s1 = parts[0];
         QString s2 = parts.size() > 1 ? parts[1] : NULL;
         QString s3 = parts.size() > 2 ? parts[2] : NULL;
