@@ -34,10 +34,7 @@ public:
     {
 
         trayIcon = new QSystemTrayIcon(this);
-        QIcon icon("/home/***REMOVED***/***REMOVED***/***REMOVED***/system-control-gui/images/ic_menu_black_24dp_2x.png"); // TODO
-        // QIcon icon(":/images/menu.png");
-        qDebug() << icon;
-        trayIcon->setIcon(icon);
+        trayIcon->setIcon(QIcon(":/images/menu.png"));
         trayIcon->show();
         QObject::connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayIconClicked()));
 

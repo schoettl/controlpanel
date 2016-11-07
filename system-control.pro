@@ -22,3 +22,6 @@ HEADERS  += maindialog.h \
     mybutton.h
 
 FORMS    += maindialog.ui
+
+RESOURCES += \
+    res.qrc
