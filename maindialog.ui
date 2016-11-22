@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>395</width>
-    <height>324</height>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,10 +22,13 @@
      <x>10</x>
      <y>20</y>
      <width>371</width>
-     <height>261</height>
+     <height>241</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="buttonlist">
+    <property name="spacing">
+     <number>8</number>
+    </property>
     <item>
      <spacer name="verticalSpacer">
       <property name="orientation">
