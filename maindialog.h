@@ -32,7 +32,6 @@ public:
     explicit MainDialog(const QList<ButtonConfig> &list) :
         MainDialog((QWidget*) NULL)
     {
-
         trayIcon = new QSystemTrayIcon(this);
         trayIcon->setIcon(QIcon(":/images/menu_white.png"));
         trayIcon->show();
@@ -53,6 +52,13 @@ public:
         // new height of (insertIndex+1) * x and then invalidate(), which seem to have no effect.
 
         adjustSize();
+
+        // http://stackoverflow.com/questions/696209/non-resizeable-qdialog-with-fixed-size-in-qt
+        // layout()->setSizeConstraint(QLayout::SetFixedSize);
+        // -> Prgram crashes
+
+        setFixedSize(size());
+
     }
 
     ~MainDialog()
