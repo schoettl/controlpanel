@@ -1,6 +1,6 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-<qresource>
-    <file alias="/images/menu.png">images/ic_menu_black_24dp_2x.png</file>
-</qresource>
+<RCC>
+    <qresource prefix="/images">
+        <file alias="menu_black.svg">images/ic_menu_black_48px.svg</file>
+        <file alias="menu_white.svg">images/ic_menu_white_48px.svg</file>
+    </qresource>
 </RCC>
