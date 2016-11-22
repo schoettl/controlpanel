@@ -1,4 +1,3 @@
-//#include "mainwindow.h"
 #include "maindialog.h"
 #include "buttonconfig.h"
 #include <sys/stat.h>
@@ -12,6 +11,34 @@
 #include <QRegExp>
 
 #define APP_NAME_LOWER_CASE "controlpanel"
+
+void exitWithError(const QString &message)
+{
+    qInfo() << message;
+    QApplication::exit(1); // does not work: app remain open
+    // maybe because it does not quit when the main window is closed
+}
+
+struct CommandLineArgs
+{
+    bool launchInBackground = false; // quiet
+};
+
+void parseCommandLineArgs(int argc, char *argv[], CommandLineArgs &args)
+{
+    if (argc == 2)
+    {
+        QString option = argv[1];
+        if (option == "-q")
+            args.launchInBackground = true;
+        else
+            exitWithError("Invalid command line option.");
+    }
+    else if (argc > 1)
+    {
+        exitWithError("Invalid command line options.");
+    }
+}
 
 void readTextFile(const QString &filename, QStringList &lines)
 {
@@ -66,11 +93,15 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    CommandLineArgs args;
+    parseCommandLineArgs(argc, argv, args);
+
     QList<ButtonConfig> list;
     readButtonConfig(list);
 
     MainDialog d(list);
-    d.show();
+    if (!args.launchInBackground)
+        d.show();
 
     return a.exec();
 }
