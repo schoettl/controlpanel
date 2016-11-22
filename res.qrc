@@ -2,5 +2,7 @@
     <qresource prefix="/images">
         <file alias="menu_black.svg">images/ic_menu_black_48px.svg</file>
         <file alias="menu_white.svg">images/ic_menu_white_48px.svg</file>
+        <file>images/ic_menu_white_48dp_2x.png</file>
+        <file alias="menu_white.png">images/ic_menu_white_48dp_1x.png</file>
     </qresource>
 </RCC>

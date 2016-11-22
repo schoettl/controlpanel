@@ -34,7 +34,7 @@ public:
     {
 
         trayIcon = new QSystemTrayIcon(this);
-        trayIcon->setIcon(QIcon(":/images/menu_white.svg"));
+        trayIcon->setIcon(QIcon(":/images/menu_white.png"));
         trayIcon->show();
         QObject::connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayIconClicked()));
 
