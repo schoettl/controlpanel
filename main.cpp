@@ -1,6 +1,5 @@
 #include "maindialog.h"
 #include "buttonconfig.h"
-#include <sys/stat.h>
 #include <QApplication>
 #include <QStandardPaths>
 #include <QList>
@@ -14,7 +13,8 @@
 
 void exitWithError(const QString &message)
 {
-    qInfo() << message;
+    // qInfo() << message; // not available in Qt 5.2
+    qWarning() << message;
     QApplication::exit(1); // does not work: app remain open
     // maybe because it does not quit when the main window is closed
 }
