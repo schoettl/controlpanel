@@ -3,6 +3,7 @@
 
 #include <QPushButton>
 #include <QApplication>
+#include <QThread>
 
 #include "buttonconfig.h"
 
@@ -42,6 +43,8 @@ public slots:
         else
         {
             buttonConfig.runPrimaryShellCommand();
+            QThread::msleep(50); // sleep 50 ms before updating button visibility
+            updateVisibility();
         }
     }
 };
