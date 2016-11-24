@@ -47,6 +47,12 @@ public slots:
             {
                 window()->close();
             }
+            else
+            {
+                QThread::msleep(20);
+                // There is another slot registered for buttons, which updates the button visibility.
+                // Give them a little time.
+            }
         }
     }
 };
