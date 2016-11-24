@@ -21,7 +21,11 @@ Example configuration file `~/.config/controlpanel/buttons.conf`:
 
 # - Button caption
 # - Primary button shell command
-# - Shell command to determine button visibility
+# - Shell command to determine button visibility (default: always visible)
+# - Flag to indicate if the window should be hidden after clicking the button
+#   (0 or 1; default: 0 -> window is not hidden)
+
+# Trailing columns can be omitted.
 
 # Don't forget the trailing "&" in the primary command
 # to run a command in background.
@@ -29,8 +33,8 @@ Example configuration file `~/.config/controlpanel/buttons.conf`:
 # :quit and :close are special commands.
 
 Herunterfahren	xmessage shutdown -h now &	true
-Tastatur	florence &
-Netzwerk	nm-connection-editor &
+Tastatur	florence &	true	0
+Netzwerk	nm-connection-editor &	true	1
 Fernwartung aktivieren	xmessage autossh ...	! ps -C autossh
 Fernwartung deaktivieren	florence &	ps -C autossh
 Invisible	xmessage hallo &	false

@@ -43,8 +43,10 @@ public slots:
         else
         {
             buttonConfig.runPrimaryShellCommand();
-            QThread::msleep(50); // sleep 50 ms before updating button visibility
-            updateVisibility();
+            if (buttonConfig.shouldHideWindowOnClick())
+            {
+                window()->close();
+            }
         }
     }
 };

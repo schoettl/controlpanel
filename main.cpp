@@ -83,7 +83,9 @@ void readButtonConfig(QList<ButtonConfig> &list)
         QString s1 = parts[0];
         QString s2 = parts.size() > 1 ? parts[1] : NULL;
         QString s3 = parts.size() > 2 ? parts[2] : NULL;
-        ButtonConfig* bc = new ButtonConfig(s1, s2, s3);
+        QString s4 = parts.size() > 3 ? parts[3] : NULL;
+        bool hide = s4 != "0";
+        ButtonConfig *bc = new ButtonConfig(s1, s2, s3, hide);
         list.append(*bc);
     }
 

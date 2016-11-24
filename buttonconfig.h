@@ -13,11 +13,13 @@ private:
     QString caption;
     QString primaryShellCommand;
     QString shellCommandToDetermineVisibility;
+    bool hideWindowOnClick;
 public:
-    ButtonConfig(const QString& caption, const QString& primaryShellCommand, const QString& shellCommandToDetermineVisibility) :
+    ButtonConfig(const QString& caption, const QString& primaryShellCommand, const QString& shellCommandToDetermineVisibility, bool hideWindowOnClick) :
         caption(caption),
         primaryShellCommand(primaryShellCommand),
-        shellCommandToDetermineVisibility(shellCommandToDetermineVisibility)
+        shellCommandToDetermineVisibility(shellCommandToDetermineVisibility),
+        hideWindowOnClick(hideWindowOnClick)
     {
     }
 
@@ -43,6 +45,11 @@ public:
     const QString& getCaption() const
     {
         return caption;
+    }
+
+    bool shouldHideWindowOnClick() const
+    {
+        return hideWindowOnClick;
     }
 
     void runPrimaryShellCommand() const
