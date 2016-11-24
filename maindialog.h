@@ -85,8 +85,14 @@ private slots:
 
     void trayIconClicked()
     {
-        // ignore reason; always show window
-        this->show();
+        if (isVisible())
+        {
+            hide();
+        }
+        else
+        {
+            show();
+        }
     }
 
 private:
