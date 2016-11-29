@@ -74,13 +74,15 @@ protected:
         hide();
     }
 
+    virtual void showEvent(QShowEvent *event)
+    {
+        updateButtonVisibility();
+    }
+
 private slots:
     void buttonClicked()
     {
-        foreach (MyButton* button, buttonList)
-        {
-            button->updateVisibility();
-        }
+        updateButtonVisibility();
     }
 
     void trayIconClicked()
@@ -100,6 +102,14 @@ private:
     QSystemTrayIcon* trayIcon;
     QList<MyButton*> buttonList;
 
+    void updateButtonVisibility()
+    {
+        qDebug() << "Updating visibility for all buttons.";
+        foreach (MyButton* button, buttonList)
+        {
+            button->updateVisibility();
+        }
+    }
 };
 
 #endif // MAINDIALOG_H

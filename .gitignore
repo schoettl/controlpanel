@@ -4,7 +4,8 @@ Makefile
 tags
 moc_*
 ui_*
+qrc_res.cpp
 *.autosave
 *.user
 .qmake.stash
-system-control
+controlpanel

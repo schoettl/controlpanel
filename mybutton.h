@@ -50,7 +50,8 @@ public slots:
             else
             {
                 QThread::msleep(20);
-                // There is another slot registered for buttons, which updates the button visibility.
+                // There is another slot registered for button click signals.
+                // This slot updates the button visibility.
                 // Give them a little time.
             }
         }
