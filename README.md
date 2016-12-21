@@ -42,6 +42,16 @@ Schließen	:close
 Beenden	:quit
 ```
 
+Dependencies
+------------
+
+Required packages (on Debian):
+
+```
+qt5-default
+qt5-qmake      # included in qt5-default?
+```
+
 Disclaimer
 ----------
 
