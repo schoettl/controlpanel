@@ -1,0 +1,4 @@
+/* sample stylesheet; location must be ~/.config/controlpanel/stylesheet.css */
+QPushButton {
+    font-size: 20px;
+}

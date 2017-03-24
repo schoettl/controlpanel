@@ -55,23 +55,10 @@ void readTextFile(const QString &filename, QStringList &lines)
     }
 }
 
-void readButtonConfig(QList<ButtonConfig> &list)
+void readButtonConfig(const QString &filename, QList<ButtonConfig> &list)
 {
-    //QString s = QStandardPaths::locate(QStandardPaths::ConfigLocation, APP_NAME_LOWER_CASE, QStandardPaths::LocateDirectory);
-    QString configDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    qDebug() << configDir;
-
-    QString configDir2 = configDir + "/" + APP_NAME_LOWER_CASE;
-    QDir dir(configDir2);
-    if (!dir.exists())
-    {
-        dir.mkpath(".");
-    }
-
-    QString configFile = configDir2 + "/buttons.conf";
-
     QStringList lines;
-    readTextFile(configFile, lines);
+    readTextFile(filename, lines);
 
     foreach(QString line, lines)
     {
@@ -91,6 +78,21 @@ void readButtonConfig(QList<ButtonConfig> &list)
 
 }
 
+QString getConfigFilename(const QString &basename)
+{
+    //QString s = QStandardPaths::locate(QStandardPaths::ConfigLocation, APP_NAME_LOWER_CASE, QStandardPaths::LocateDirectory);
+    QString configDir = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    qDebug() << configDir;
+
+    QString configDir2 = configDir + "/" + APP_NAME_LOWER_CASE;
+    QDir dir(configDir2);
+    if (!dir.exists())
+    {
+        dir.mkpath(".");
+    }
+    return configDir2 + "/" + basename;
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -99,7 +101,12 @@ int main(int argc, char *argv[])
     parseCommandLineArgs(argc, argv, args);
 
     QList<ButtonConfig> list;
-    readButtonConfig(list);
+    readButtonConfig(getConfigFilename("buttons.conf"), list);
+
+    QStringList stylesheetLines;
+    readTextFile(getConfigFilename("stylesheet.css"), stylesheetLines);
+    QString stylesheet = stylesheetLines.join("");
+    a.setStyleSheet(stylesheet);
 
     MainDialog d(list);
     if (!args.launchInBackground)
