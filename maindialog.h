@@ -87,6 +87,7 @@ private slots:
 
     void trayIconClicked()
     {
+        qDebug() << "Tray icon clicked.";
         if (isVisible())
         {
             qDebug() << "Hiding main window.";
