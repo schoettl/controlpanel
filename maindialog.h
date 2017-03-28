@@ -89,10 +89,12 @@ private slots:
     {
         if (isVisible())
         {
+            qDebug() << "Hiding main window.";
             hide();
         }
         else
         {
+            qDebug() << "Showing main window.";
             show();
         }
     }
