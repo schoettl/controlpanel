@@ -75,6 +75,11 @@ protected:
         updateButtonVisibility();
     }
 
+    virtual void reject()
+    {
+        // ignore escape key
+    }
+
 private slots:
     void buttonClicked()
     {
