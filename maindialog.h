@@ -47,10 +47,6 @@ public:
             ui->buttonlist->insertWidget(insertIndex++, button);
         }
 
-        // How can I dynamically expand the buttonlist layout for an abitrary number of buttons??
-        // Could not found a solution... tried its properties and even setGeometry with a
-        // new height of (insertIndex+1) * x and then invalidate(), which seem to have no effect.
-
         adjustSize();
 
         // http://stackoverflow.com/questions/696209/non-resizeable-qdialog-with-fixed-size-in-qt
